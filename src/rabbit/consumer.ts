@@ -1,4 +1,6 @@
 import {connect} from 'amqplib'
+import pool from '../database'
+import {insertMessage} from '../utils/queries'
 
 
 export const listenMessages = async () => {
@@ -11,7 +13,7 @@ export const listenMessages = async () => {
         exclusive: true
     })
     await channel.bindQueue(q.queue, process.env.EXCHANGE_NAME, process.env.QUEUE_KEY)
-    return await channel.consume(q.queue, (msg) => console.log(msg) ,{
+    return channel.consume(q.queue, async msg => await pool.query(insertMessage(msg.content.toString())), {
         noAck : false
     })
 }

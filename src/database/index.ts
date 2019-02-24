@@ -20,7 +20,6 @@ pool.connect()
     })
 
 pool.on('error', err => console.error('Postgres Error : ', err))
-    .on('remove', () => console.log('Disconnected from Postgres'))
 
 
 export default pool

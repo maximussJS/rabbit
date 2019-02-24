@@ -1,5 +1,6 @@
 import * as express from 'express'
 import * as morgan from 'morgan'
+import router from './routes/producer'
 import {load} from 'dotenv'
 import {json,urlencoded} from 'body-parser'
 
@@ -15,6 +16,8 @@ producer.use(json())
 producer.use(urlencoded({
     extended: true
 }))
+
+producer.use('/', router)
 
 
 export default producer

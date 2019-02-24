@@ -4,7 +4,7 @@
     "module": "commonjs",
     "outDir": "build",
     "sourceMap": true,
-    "rootDir": "rabbit"
+    "rootDir": "src"
   },
   "include": [
     "src/**/*.ts"

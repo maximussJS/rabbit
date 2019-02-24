@@ -1,6 +1,7 @@
 import {Router, Request, Response} from 'express'
-import {sendMessage} from '../rabbit/producer'
+import {initSender} from '../rabbit/producer'
 import {success, fail, serverError} from '../utils/responses'
+
 
 
 export default Router()
@@ -8,7 +9,8 @@ export default Router()
         try {
             const msg = req.params.msg
             if(!msg) return res.status(400).json(fail('Message param is required'))
-            await sendMessage(msg)
+            const sendToQueue = await initSender()
+            sendToQueue(msg)
             return res.status(200).json(success('Sent'))
         }
         catch (e) {
@@ -20,7 +22,7 @@ export default Router()
         try {
             const {message} = req.body
             if(!message) return res.status(400).json(fail('No message'))
-            await sendMessage(message)
+            const sendToQueue = await initSender()
             return res.status(200).json(success('Sent'))
         }
         catch (e) {
