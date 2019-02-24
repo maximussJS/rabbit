@@ -4,7 +4,7 @@
   "description": "simple rabbitmq usage",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha -r ts-node/register test/*.ts",
     "start": "tsc && node ./build/run.js"
   },
   "keywords": [],
@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/amqplib": "^0.5.10",
+    "@types/axios": "^0.14.0",
     "@types/body-parser": "^1.17.0",
     "@types/chai": "^4.1.7",
     "@types/dotenv": "^6.1.0",
@@ -20,8 +21,10 @@
     "@types/morgan": "^1.7.35",
     "@types/node": "^11.9.5",
     "@types/pg": "^7.4.13",
+    "axios": "^0.18.0",
     "chai": "^4.2.0",
     "mocha": "^6.0.1",
+    "ts-node": "^8.0.2",
     "tslint": "^5.12.1",
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.3.3333"
