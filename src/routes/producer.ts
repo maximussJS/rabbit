@@ -23,6 +23,7 @@ export default Router()
             const {message} = req.body
             if(!message) return res.status(400).json(fail('No message'))
             const sendToQueue = await initSender()
+            sendToQueue(message)
             return res.status(200).json(success('Sent'))
         }
         catch (e) {
