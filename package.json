@@ -4,7 +4,7 @@
   "description": "simple rabbitmq usage",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r ts-node/register test/*.ts",
+    "test": "tsc && node ./build/run.js && mocha -r ts-node/register test/*.ts",
     "start": "tsc && node ./build/run.js"
   },
   "keywords": [],
